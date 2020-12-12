@@ -1,0 +1,24 @@
+on: [push]
+
+jobs:
+  scheduler-test:
+    runs-on: ubuntu-latest
+    name: scheduler-test
+    steps:
+      - name: Checkout
+        users: actions/checkout@v2
+      - name: set up python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: requrements
+        run: |
+          pip install -r ./scheduler_vo_in_uc/requirements.txt
+          pip install pytest pytest-cov
+      - name: Unit Test - vo in uc
+        run: |
+          (cd ./scheduler_vo_in_uc/ & pytest -v --cov=./ --cov-report=term)
+      - name: Unit Test - vo in presentation
+        run: |
+          (cd ./scheduler_vo_in_uc/ & pytest -v --cov=./ --cov-report=term)
+
