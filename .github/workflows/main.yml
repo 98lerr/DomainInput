@@ -17,8 +17,8 @@ jobs:
           pip install pytest pytest-cov
       - name: Unit Test - vo in uc
         run: |
-          (cd ./scheduler_vo_in_uc/ & pytest -v --cov=./ --cov-report=term)
+          (cd ./scheduler_vo_in_uc/ && pytest -v --cov=./ --cov-report=term)
       - name: Unit Test - vo in presentation
         run: |
-          (cd ./scheduler_vo_in_uc/ & pytest -v --cov=./ --cov-report=term)
+          (cd ./scheduler_vo_in_uc/ && pytest -v --cov=./ --cov-report=term)
 

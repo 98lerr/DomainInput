@@ -35,17 +35,12 @@ def wareki_register():
     input_title = json_data.get("schedule-title")
 
     try:
-        request_obj.convert_from_wareki(
+        schedule_year, schedule_month, schedule_day, schedule_title = request_obj.convert_from_wareki(
             schedule_year=input_year,
             schedule_month=input_month,
             schedule_day=input_day,
             schedule_title=input_title
         )
-        request_dict = request_obj.to_dict()
-        schedule_year = request_dict.get("schedule_year")
-        schedule_month = request_dict.get("schedule_month")
-        schedule_day = request_dict.get("schedule_day")
-        schedule_title = request_dict.get("schedule_title")
 
         use_case.register_schedule(
             schedule_year, schedule_day, schedule_month, schedule_title

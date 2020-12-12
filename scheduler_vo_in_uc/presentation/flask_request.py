@@ -27,6 +27,8 @@ class FlaskRequest:
         self.request["schedule_day"] = int(schedule_date.day)
         self.request["schedule_title"] = schedule_title
 
+        return self.request["schedule_year"], self.request["schedule_month"], self.request["schedule_day"], self.request["schedule_title"]
+
     @staticmethod
     def _convert_from_wareki_to_date(year: str, month: str, day: str) -> datetime:
         input_year_month_day = "{}年{}月{}日".format(year, month, day)

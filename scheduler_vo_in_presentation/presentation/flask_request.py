@@ -2,6 +2,9 @@ from japanera import Japanera, EraDate
 from datetime import datetime
 import traceback
 
+from domain.schedule.schedule_date import ScheduleDate
+from domain.schedule.schedule_title import ScheduleTitle
+
 
 class FlaskRequest:
     def __init__(self):
@@ -26,6 +29,13 @@ class FlaskRequest:
         self.request["schedule_month"] = int(schedule_date.month)
         self.request["schedule_day"] = int(schedule_date.day)
         self.request["schedule_title"] = schedule_title
+
+        domain_schedule_date = ScheduleDate(self.request["schedule_year"],
+                                            self.request["schedule_month"],
+                                            self.request["schedule_day"]
+                                            )
+        domain_schedule_title = ScheduleTitle(self.request["schedule_title"])
+        return domain_schedule_date, domain_schedule_title
 
     @staticmethod
     def _convert_from_wareki_to_date(year: str, month: str, day: str) -> datetime:
